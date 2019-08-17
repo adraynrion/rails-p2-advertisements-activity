@@ -1,0 +1,18 @@
+<h1>Création d'un nouveau compte</h1>
+
+<%= form_tag "/users/new", method: :post do %>
+  <div>
+    <label for="user[name]">Nom d'utilisateur</label>
+    <input type="text" name="user[name]" id="user[name]" placeholder="Username">
+    <% if @user %>
+      <div class="alert-errors"><%= @user.errors[:name].first %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <label for="user[password]">Mot de passe</label>
+    <input type="password" name="user[password]" id="user[password]">
+  </div>
+
+  <input type="submit" value="Créer l'utilisateur">
+<% end %>

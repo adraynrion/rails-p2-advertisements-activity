@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <% if flash[:success] %>
+      <div class="alert-success">
+        <b>La dernière requête est un succès :</b> <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:info] %>
+      <div class="alert-info">
+        <b>Informations sur la dernière requête :</b> <%= flash[:info] %>
+      </div>
+    <% end %>
+
+    <% if !@current_user %>
+      <p><a href="/users/login">Connexion</a></p>
+      <p><a href="/users/new">S'enregistrer</a></p>
+    <% else %>
+      <%= form_tag "/users/login", method: :delete do %>
+        <input type="submit" value="Déconnnexion">
+      <% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
