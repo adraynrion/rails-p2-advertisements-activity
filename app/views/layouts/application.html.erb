@@ -22,12 +22,13 @@
     <% end %>
 
     <% if !@current_user %>
-      <p><a href="/users/login">Connexion</a></p>
-      <p><a href="/users/new">S'enregistrer</a></p>
+      <p><a href="/users/login">Connexion</a> | <a href="/users/new">S'enregistrer</a></p>
+      <p><a href="/advertisements">Toutes les annonces</a></p>
     <% else %>
       <%= form_tag "/users/login", method: :delete do %>
         <input type="submit" value="Déconnnexion">
       <% end %>
+      <p><a href="/advertisements">Toutes les annonces</a> | <a href="/advertisements/new">Ajouter une annonce</a></p>
     <% end %>
 
     <%= yield %>

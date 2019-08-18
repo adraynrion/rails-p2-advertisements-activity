@@ -1,0 +1,17 @@
+<h1>Liste des annonces</h1>
+
+<ul>
+  <% @advertisements.each do |advertisement| %>
+    <%= ad_link(advertisement) %>
+  <% end %>
+</ul>
+
+<% if @current_user.try(:admin?) %>
+  <h1>Administration des annonces</h1>
+
+  <ul>
+    <% @moderation_advertisements.each do |advertisement| %>
+      <%= ad_link(advertisement) %>
+    <% end %>
+  </ul>
+<% end %>

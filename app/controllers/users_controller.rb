@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     redirect_connected_user
+    @user = User.new
   end
 
   def create
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:info] = "Vous êtes maintenant déconnecté !"
-    redirect_to root_path
+    redirect_to "/users/login"
   end
 
   private

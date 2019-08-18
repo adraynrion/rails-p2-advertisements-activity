@@ -1,0 +1,12 @@
+<h1>Annonce numéro <%= @advertisement.id %></h1>
+
+<fieldset>
+  <legend><strong><%= @advertisement.title %></strong></legend>
+  <p><%= @advertisement.content %><br><strong>Créer par <%= @advertisement.user.name %></strong></p>
+  <p>Au prix de <%= @advertisement.price %> €</p>
+  <% if !@advertisement.published? %>
+    <%= form_tag "/advertisements/#{@advertisement.id}", method: :patch do %>
+      <input type="submit" value="Publier l'annonce">
+    <% end %>
+  <% end %>
+</fieldset>

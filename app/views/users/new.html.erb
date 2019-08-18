@@ -4,9 +4,7 @@
   <div>
     <label for="user[name]">Nom d'utilisateur</label>
     <input type="text" name="user[name]" id="user[name]" placeholder="Username">
-    <% if @user %>
-      <div class="alert-errors"><%= @user.errors[:name].first %></div>
-    <% end %>
+    <div class="alert-errors"><%= @user.errors[:name].first %></div>
   </div>
 
   <div>
