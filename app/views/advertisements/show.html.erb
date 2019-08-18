@@ -10,3 +10,29 @@
     <% end %>
   <% end %>
 </fieldset>
+
+<% if @advertisement.published? %>
+  <h1>Commentaires</h1>
+
+  <div class="comments">
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p><%= comment.content %></p>
+        <p><strong>Écrit par <%= comment.user.name %></strong></p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+
+  <% if @current_user %>
+    <%= form_tag "/advertisements/#{@advertisement.id}", method: :post do %>
+      <div>
+        <label for="comment[content]">Message</label><br>
+        <textarea name="comment[content]" rows="8" cols="80"><%= @comment.content %></textarea>
+        <div class="alert-errors"><%= @comment.errors[:content].first %></div>
+      </div>
+
+      <input type="submit" value="Enregistrer commentaire">
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   get 'advertisements' => 'advertisements#index'
   get 'advertisements/new' => 'advertisements#new'
   post 'advertisements/new' => 'advertisements#create'
   get 'advertisements/:id' => 'advertisements#show'
   patch 'advertisements/:id' => 'advertisements#validate'
+
+  post 'advertisements/:id' => 'comments#create'
 
   get 'users/new' => 'users#new'
   post 'users/new' => 'users#create'

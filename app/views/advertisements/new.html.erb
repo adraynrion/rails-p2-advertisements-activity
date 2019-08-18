@@ -2,19 +2,19 @@
 
 <%= form_tag "/advertisements/new", method: :post do %>
   <div>
-    <label for="advertisement[title]">Titre de l'annonce</label>
+    <label for="advertisement[title]">Titre de l'annonce</label><br>
     <input type="text" name="advertisement[title]" value="<%= @advertisement.title %>">
     <div class="alert-errors"><%= @advertisement.errors[:title].first %></div>
   </div>
 
   <div>
-    <label for="advertisement[content]">Contenu de l'annonce</label>
+    <label for="advertisement[content]">Contenu de l'annonce</label><br>
     <textarea name="advertisement[content]" rows="8" cols="80"><%= @advertisement.content %></textarea>
     <div class="alert-errors"><%= @advertisement.errors[:content].first %></div>
   </div>
 
   <div>
-    <label for="advertisement[price]">Prix de l'annonce</label>
+    <label for="advertisement[price]">Prix de l'annonce</label><br>
     <input type="number" name="advertisement[price]" value="<%= @advertisement.price %>"> €
     <div class="alert-errors"><%= @advertisement.errors[:price].first %></div>
   </div>

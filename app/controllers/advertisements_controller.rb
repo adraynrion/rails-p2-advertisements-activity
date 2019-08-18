@@ -26,16 +26,18 @@ class AdvertisementsController < ApplicationController
 
   def show
     @advertisement = Advertisement.find(params[:id])
-
     if !@advertisement.published?
       if !@current_user
         flash[:info] = "Vous devez être connecté !"
         redirect_to "/users/login"
       elsif @current_user && !@current_user.admin?
-        flash[:info] = "Vous devez être administrateur de ce site pour effectué cette commande."
+        flash[:info] = "Vous devez être administrateur de ce site pour visionner cette annonce."
         redirect_to request.referrer || "/advertisements"
       end
     end
+
+    @comments = Comment.where(advertisement_id: params[:id])
+    @comment = Comment.new
   end
 
   def validate
@@ -53,13 +55,6 @@ class AdvertisementsController < ApplicationController
   end
 
   private
-
-  def redirect_not_connected_user
-    if !@current_user
-      flash[:info] = "Vous devez être connecté !"
-      redirect_to "/users/login"
-    end
-  end
 
   def redirect_no_admin_user
     if !@current_user.admin?
